@@ -1,27 +1,28 @@
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Providence RP</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; }
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const url = params.get("url");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Providence RP</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get("url");
 
-      if (!url || !url.endsWith(".html")) {
-        document.body.innerHTML = "<h2>❌ Invalid or missing transcript URL</h2>";
-      } else {
-        document.body.innerHTML = `<iframe src="${url}"></iframe>`;
-      }
-    </script>
-  </body>
-  </html>
+    // Basic validation for Discord attachment URL
+    if (!url || !url.startsWith("https://cdn.discordapp.com/attachments/")) {
+      document.body.innerHTML = "<h2>❌ Invalid or missing transcript URL</h2>";
+    } else {
+      document.body.innerHTML = `<iframe src="${url}"></iframe>`;
+    }
+  </script>
+</body>
+</html>
